@@ -1,0 +1,10 @@
+sudo: required #to use docker need super level permissions
+services:
+  - docker #travis ci will automatically install a copy of docker into our running container
+
+before_install:
+ - docker build -t zoelucas/docker-react -f Dockerfile.dev . #because testing
+
+script:
+ - docker run zoelucas/docker-react npm run test -- --coverage #the -- --coverage tells
+# travis to stop running after t test instead of hanging.
