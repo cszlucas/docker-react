@@ -85,3 +85,6 @@ I created the frontend directory with: `npx create-react-app frontend`
 
 `git init` in directory you want to create new git repository.
 Then add all the work you want and commit.
+`git remote add origin git@github.com:cszlucas/docker-react.git` //add a remote repository(the one you link in) that were
+calling origin.
+`git push origin master`
