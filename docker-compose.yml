@@ -1,26 +1,8 @@
 version: '3'
-services: #containers started when run
-  web: #container called web
+services:
+  web:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
-    volumes:
-      - /app/node_modules #do not map a folder against this directory inside the container
-      - .:/app #current folder outside container mapped to app folder inside container
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    command: [" npm", "run", "test"] #override startup command
-    
-
-
-
-#line 4: specify image. build . assumes a dockerfile inside working directory
-#line 5: where we want the files and folders from this image to be pulled from.
-#line 6: location for dockerfile to use.
+      - '80:80'

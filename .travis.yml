@@ -8,3 +8,17 @@ before_install:
 script:
  - docker run zoelucas/docker-react npm run test -- --coverage #the -- --coverage tells
 # travis to stop running after t test instead of hanging.
+
+deploy:
+  provider: elasticbeanstalk #travis ci is preconfigured to deploy to certain providers
+  region: "us-east-1" #shown as part of app url
+  app: "frontend"
+  env: "Frontend-env"
+  bucket_name: "elasticbeanstalk-us-east-1-654654204090" #travis takes all the github files, zips them up, copies into s3 bucket
+  bucket-path: "frontend" #the s3 bucket is reused for all the diff elasticbeanstalk env created
+  on:
+    branch: master #anytime we push code to master then deploy
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY" #you set these up with an IAM user and then stored in travis environmental vars
+  
+
