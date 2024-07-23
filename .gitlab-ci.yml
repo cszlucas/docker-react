@@ -2,11 +2,12 @@ stages:
   - test
   - deploy
 
-image: node:16-alpine
+image: docker/dockerfile:alpine
 
 test:
   stage: test
   script:
+    - docker -v
     - docker build -t zoelucas/docker-react -f Dockerfile.dev .
     - docker run zoelucas/docker-react npm run test
 
