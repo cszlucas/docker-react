@@ -88,3 +88,9 @@ Then add all the work you want and commit.
 `git remote add origin git@github.com:cszlucas/docker-react.git` //add a remote repository(the one you link in) that were
 calling origin.
 `git push origin master`
+
+## Next Steps
+
+- Configure pipeline to run gitlab.yml which is copied from travis.yml.
+Want to deploy docker image to elastic beanstalk. Elastic beanstalk runs the image
+automatically so no need to specify that.

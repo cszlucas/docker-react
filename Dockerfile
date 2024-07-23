@@ -10,6 +10,9 @@ COPY . .
 RUN npm run build
 
 FROM nginx
+EXPOSE 80
+#elastic beanstalk looks for the expose instruction to know port to map to
+
 #want to copy the build folder directory, in the builder phase
 #copying the thing to /usr/share/nginx/html inside the nginx container. Can find this in docker hub nginx image.
 #everything else not in builder directory is lost, including alpine image

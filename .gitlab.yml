@@ -1,0 +1,21 @@
+stages:
+  - test
+  - deploy
+
+image: node:16-alpine
+
+test:
+  stage: test
+  script:
+    - docker build -t zoelucas/docker-react -f Dockerfile.dev .
+    - docker run zoelucas/docker-react npm run test
+
+deploy:
+  stage: deploy
+  script:
+    - apt-get update && apt-get install -y awscli
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+    - aws configure set region $AWS_REGION
+    - docker build -t zoelucas/docker-react Dockerfile .
+    - aws elasticbeanstalk create-deployment --application-name "frontend" --environment-name "Frontend-env" --version-label HEAD  # Or use 'update-deployment' for existing environments
