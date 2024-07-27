@@ -8,6 +8,7 @@ test:
   script:
     - apk update && apk add --no-cache docker-cli
     - docker -v
+    - sudo service docker start
     - docker build -t zoelucas/docker-react -f Dockerfile.dev .
     - docker run zoelucas/docker-react npm run test
 

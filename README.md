@@ -94,3 +94,7 @@ calling origin.
 - Configure pipeline to run gitlab.yml which is copied from travis.yml.
 Want to deploy docker image to elastic beanstalk. Elastic beanstalk runs the image
 automatically so no need to specify that.
+- Facing problems:
+
+1) Need node image for npm commands, but need docker image for docker commands
+2) Currently docker daemon hasn't started.
